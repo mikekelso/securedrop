@@ -1,4 +1,6 @@
 import tempfile
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 class SourceNavigationSteps():
 
@@ -8,7 +10,12 @@ class SourceNavigationSteps():
         self.assertEqual("SecureDrop | Protecting Journalists and Sources", self.driver.title)
 
     def _source_chooses_to_submit_documents(self):
-        self.driver.find_element_by_id('submit-documents-button').click()
+        element_to_hover_over = self.driver.find_element_by_id('submit-documents-button')
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        hover.perform()
+
+        submit_button = self.driver.find_element_by_id('submit-documents-button-hover')
+        submit_button.click()
 
         codename = self.driver.find_element_by_css_selector('#codename')
 
@@ -16,9 +23,13 @@ class SourceNavigationSteps():
         self.source_name = codename.text
 
     def _source_continues_to_submit_page(self):
-        continue_button = self.driver.find_element_by_id('continue-button')
+        element_to_hover_over = self.driver.find_element_by_id('continue-button')
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        hover.perform()
 
+        continue_button = self.driver.find_element_by_id('continue-button-hover')
         continue_button.click()
+
         headline = self.driver.find_element_by_class_name('headline')
         self.assertEqual('Submit documents and messages', headline.text)
 
@@ -33,8 +44,11 @@ class SourceNavigationSteps():
             file_upload_box = self.driver.find_element_by_css_selector('[name=fh]')
             file_upload_box.send_keys(filename)
 
-            submit_button = self.driver.find_element_by_css_selector(
-                'button[type=submit]')
+            element_to_hover_over = self.driver.find_element_by_id('submit-doc-button')
+            hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+            hover.perform()
+
+            submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
             submit_button.click()
 
             notification = self.driver.find_element_by_css_selector('p.notification')
@@ -45,8 +59,11 @@ class SourceNavigationSteps():
         text_box = self.driver.find_element_by_css_selector('[name=msg]')
 
         text_box.send_keys(self.secret_message)  # send_keys = type into text box
-        submit_button = self.driver.find_element_by_css_selector(
-            'button[type=submit]')
+        element_to_hover_over = self.driver.find_element_by_id('submit-doc-button')
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        hover.perform()
+
+        submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
         submit_button.click()
 
         notification = self.driver.find_element_by_css_selector(
