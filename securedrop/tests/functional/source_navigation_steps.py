@@ -12,14 +12,10 @@ class SourceNavigationSteps():
     def _source_chooses_to_submit_documents(self):
         element_to_hover_over = self.driver.find_element_by_id('submit-documents-button')
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-documents-button-hover')
+        hover.move_to_element(element_we_should_be_hovering_on)
+        hover.click()
         hover.perform()
-
-        self.wait_for(
-            lambda: self.driver.find_element(By.ID,
-                    'submit-documents-button-hover').is_displayed()
-        )
-        submit_button = self.driver.find_element_by_id('submit-documents-button-hover')
-        submit_button.click()
 
         codename = self.driver.find_element_by_css_selector('#codename')
 
@@ -29,14 +25,10 @@ class SourceNavigationSteps():
     def _source_continues_to_submit_page(self):
         element_to_hover_over = self.driver.find_element_by_id('continue-button')
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        element_we_should_be_hovering_on = self.driver.find_element_by_id('continue-button-hover')
+        hover.move_to_element(element_we_should_be_hovering_on)
+        hover.click()
         hover.perform()
-
-        self.wait_for(
-            lambda: self.driver.find_element(By.ID,
-                    'continue-button-hover').is_displayed()
-        )
-        continue_button = self.driver.find_element_by_id('continue-button-hover')
-        continue_button.click()
 
         headline = self.driver.find_element_by_class_name('headline')
         self.assertEqual('Submit documents and messages', headline.text)
@@ -54,14 +46,10 @@ class SourceNavigationSteps():
 
             element_to_hover_over = self.driver.find_element_by_id('submit-doc-button')
             hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+            element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-doc-button-hover')
+            hover.move_to_element(element_we_should_be_hovering_on)
+            hover.click()
             hover.perform()
-
-            self.wait_for(
-                lambda: self.driver.find_element(By.ID,
-                        'submit-doc-button-hover').is_displayed()
-            )
-            submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
-            submit_button.click()
 
             notification = self.driver.find_element_by_css_selector('p.notification')
             expected_notification = 'Thanks for submitting something to SecureDrop! Please check back later for replies.'
@@ -73,14 +61,10 @@ class SourceNavigationSteps():
         text_box.send_keys(self.secret_message)  # send_keys = type into text box
         element_to_hover_over = self.driver.find_element_by_id('submit-doc-button')
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-doc-button-hover')
+        hover.move_to_element(element_we_should_be_hovering_on)
+        hover.click()
         hover.perform()
-
-        self.wait_for(
-            lambda: self.driver.find_element(By.ID,
-                    'submit-doc-button-hover').is_displayed()
-        )
-        submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
-        submit_button.click()
 
         notification = self.driver.find_element_by_css_selector(
             'p.notification')
