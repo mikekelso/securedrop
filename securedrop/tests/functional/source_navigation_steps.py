@@ -1,6 +1,6 @@
 import tempfile
 from selenium.webdriver.common.action_chains import ActionChains
-
+from selenium.webdriver.common.by import By
 
 class SourceNavigationSteps():
 
@@ -14,9 +14,11 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         hover.perform()
 
+        self.wait_for(
+            lambda: self.driver.find_element(By.ID,
+                    'submit-documents-button-hover').is_displayed()
+        )
         submit_button = self.driver.find_element_by_id('submit-documents-button-hover')
-        hover = ActionChains(self.driver).move_to_element(submit_button)
-        hover.perform()
         submit_button.click()
 
         codename = self.driver.find_element_by_css_selector('#codename')
@@ -29,9 +31,11 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         hover.perform()
 
+        self.wait_for(
+            lambda: self.driver.find_element(By.ID,
+                    'continue-button-hover').is_displayed()
+        )
         continue_button = self.driver.find_element_by_id('continue-button-hover')
-        hover = ActionChains(self.driver).move_to_element(continue_button)
-        hover.perform()
         continue_button.click()
 
         headline = self.driver.find_element_by_class_name('headline')
@@ -52,9 +56,11 @@ class SourceNavigationSteps():
             hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
             hover.perform()
 
+            self.wait_for(
+                lambda: self.driver.find_element(By.ID,
+                        'submit-doc-button-hover').is_displayed()
+            )
             submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
-            hover = ActionChains(self.driver).move_to_element(submit_button)
-            hover.perform()
             submit_button.click()
 
             notification = self.driver.find_element_by_css_selector('p.notification')
@@ -69,9 +75,11 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         hover.perform()
 
+        self.wait_for(
+            lambda: self.driver.find_element(By.ID,
+                    'submit-doc-button-hover').is_displayed()
+        )
         submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
-        hover = ActionChains(self.driver).move_to_element(submit_button)
-        hover.perform()
         submit_button.click()
 
         notification = self.driver.find_element_by_css_selector(
