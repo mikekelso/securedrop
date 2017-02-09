@@ -15,6 +15,8 @@ class SourceNavigationSteps():
         hover.perform()
 
         submit_button = self.driver.find_element_by_id('submit-documents-button-hover')
+        hover = ActionChains(self.driver).move_to_element(submit_button)
+        hover.perform()
         submit_button.click()
 
         codename = self.driver.find_element_by_css_selector('#codename')
@@ -28,6 +30,8 @@ class SourceNavigationSteps():
         hover.perform()
 
         continue_button = self.driver.find_element_by_id('continue-button-hover')
+        hover = ActionChains(self.driver).move_to_element(continue_button)
+        hover.perform()
         continue_button.click()
 
         headline = self.driver.find_element_by_class_name('headline')
@@ -49,6 +53,8 @@ class SourceNavigationSteps():
             hover.perform()
 
             submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
+            hover = ActionChains(self.driver).move_to_element(submit_button)
+            hover.perform()
             submit_button.click()
 
             notification = self.driver.find_element_by_css_selector('p.notification')
@@ -64,6 +70,8 @@ class SourceNavigationSteps():
         hover.perform()
 
         submit_button = self.driver.find_element_by_id('submit-doc-button-hover')
+        hover = ActionChains(self.driver).move_to_element(submit_button)
+        hover.perform()
         submit_button.click()
 
         notification = self.driver.find_element_by_css_selector(
