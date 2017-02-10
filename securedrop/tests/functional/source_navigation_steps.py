@@ -14,7 +14,7 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-documents-button-hover')
         hover.move_to_element(element_we_should_be_hovering_on)
-        hover.click()
+        hover.click(element_we_should_be_hovering_on)
         hover.perform()
 
         codename = self.driver.find_element_by_css_selector('#codename')
@@ -27,7 +27,7 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         element_we_should_be_hovering_on = self.driver.find_element_by_id('continue-button-hover')
         hover.move_to_element(element_we_should_be_hovering_on)
-        hover.click()
+        hover.click(element_we_should_be_hovering_on)
         hover.perform()
 
         headline = self.driver.find_element_by_class_name('headline')
@@ -48,7 +48,7 @@ class SourceNavigationSteps():
             hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
             element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-doc-button-hover')
             hover.move_to_element(element_we_should_be_hovering_on)
-            hover.click()
+            hover.click(element_we_should_be_hovering_on)
             hover.perform()
 
             notification = self.driver.find_element_by_css_selector('p.notification')
@@ -63,7 +63,7 @@ class SourceNavigationSteps():
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         element_we_should_be_hovering_on = self.driver.find_element_by_id('submit-doc-button-hover')
         hover.move_to_element(element_we_should_be_hovering_on)
-        hover.click()
+        hover.click(element_we_should_be_hovering_on)
         hover.perform()
 
         notification = self.driver.find_element_by_css_selector(
