@@ -2,6 +2,7 @@ import tempfile
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
+
 class SourceNavigationSteps():
 
     def _source_visits_source_homepage(self):
@@ -10,6 +11,11 @@ class SourceNavigationSteps():
         self.assertEqual("SecureDrop | Protecting Journalists and Sources", self.driver.title)
 
     def _source_chooses_to_submit_documents(self):
+        self.wait_for(
+             lambda: self.driver.find_element(By.ID,
+                     'submit-documents-button').is_displayed()
+        )
+
         element_to_hover_over = self.driver.find_element_by_id('submit-documents-button')
         hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         hover.perform()
@@ -18,6 +24,7 @@ class SourceNavigationSteps():
              lambda: self.driver.find_element(By.ID,
                      'submit-documents-button-hover').is_displayed()
         )
+
         submit_button = self.driver.find_element_by_id('submit-documents-button-hover')
         submit_button.click()
 
