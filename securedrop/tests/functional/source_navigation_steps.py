@@ -11,14 +11,12 @@ class SourceNavigationSteps():
         self.assertEqual("SecureDrop | Protecting Journalists and Sources", self.driver.title)
 
     def _source_chooses_to_submit_documents(self):
-        self.wait_for(
-             lambda: self.driver.find_element(By.ID,
-                     'submit-documents-button').is_displayed()
-        )
-
-        element_to_hover_over = self.driver.find_element_by_id('submit-documents-button')
-        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
-        hover.perform()
+        # We encountered a strange behavior on Travis in PR #1567
+        # where the hover and click just for this one button did not work
+        if self.driver.find_element(By.ID,'submit-documents-button').is_displayed():
+            element_to_hover_over = self.driver.find_element_by_id('submit-documents-button')
+            hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+            hover.perform()
 
         self.wait_for(
              lambda: self.driver.find_element(By.ID,
