@@ -14,19 +14,19 @@ class SourceNavigationSteps():
         # choose to "Submit Documents".
         submit_button = self.driver.find_element_by_id('submit-documents-button')
 
-        submit_button_icon = self.driver.find_element_by_css_selector(
-            'a#submit-documents-button > img.off-hover')
-        self.assertTrue(submit_button_icon.is_displayed())
+        #submit_button_icon = self.driver.find_element_by_css_selector(
+        #    'a#submit-documents-button > img.off-hover')
+        #self.assertTrue(submit_button_icon.is_displayed())
 
         # The source hovers their cursor over the button, and the visual style
         # of the button changes to encourage them to click it.
-        ActionChains(self.driver).move_to_element(submit_button).perform()
+        #ActionChains(self.driver).move_to_element(submit_button).perform()
 
         ## Let's make sure toggling the icon image with the hover state is working.
-        self.assertFalse(submit_button_icon.is_displayed())
-        submit_button_hover_icon = self.driver.find_element_by_css_selector(
-            'a#submit-documents-button > img.on-hover')
-        self.assertTrue(submit_button_hover_icon.is_displayed())
+        #self.assertFalse(submit_button_icon.is_displayed())
+        #submit_button_hover_icon = self.driver.find_element_by_css_selector(
+        #    'a#submit-documents-button > img.on-hover')
+        #self.assertTrue(submit_button_hover_icon.is_displayed())
 
         # The source clicks the submit button.
         submit_button.click()
